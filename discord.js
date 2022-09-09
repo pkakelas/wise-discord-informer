@@ -2,7 +2,6 @@
 require('dotenv').config()
 const { Client, GatewayIntentBits } = require('discord.js');
 
-const channelId = '974424972133007390'
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -10,7 +9,7 @@ const sendCreditMessage = async (amount, credit) => {
 	await client.login(process.env.DISCORD_TOKEN);
 	client.once('ready', () => {
 		const message = `You received ${amount} ${credit} 💸💸💸`
-		client.channels.cache.get(channelId).send(message)
+		client.channels.cache.get(process.env.CHANNEL_ID).send(message)
 	})
 }
 
