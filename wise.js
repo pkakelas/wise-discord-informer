@@ -11,13 +11,13 @@ const validateBody = body =>
 	'amount' in body.data &&
 	'currency' in body.data
 
-app.post('/informer', (req, res) => {
+app.post('/informer', async (req, res) => {
 	console.log('[CREDIT]', req.body)
 	if (!validateBody(req.body)) {
 		return res.sendStatus(400)
 	}
 	const { amount, currency } = req.body.data
-	sendCreditMessage(amount, currency)
+	await sendCreditMessage(amount, currency)
 
 	res.sendStatus(200);
 })
