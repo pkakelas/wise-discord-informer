@@ -2,10 +2,10 @@
 require('dotenv').config()
 const { Client, GatewayIntentBits } = require('discord.js');
 
-// Create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
+// TODO: Login only once
 const sendCreditMessage = async (amount, credit) => {
+	const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 	await client.login(process.env.DISCORD_TOKEN);
 	client.once('ready', () => {
 		const message = `You received ${amount} ${credit} 💸💸💸`
